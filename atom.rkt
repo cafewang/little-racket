@@ -16,3 +16,7 @@
 (equal? '((2 3)) (cdr '(1 (2 3))))
 
 (equal? '(a b) (cons 'a '(b)))
+(equal? '((a b) c) (cons '(a b) '(c)))
+
+(eq? 'a (car '(a b)))
+(eq? (car '(wtf wtf)) (car (cdr '(wtf wtf))))
