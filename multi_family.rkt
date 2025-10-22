@@ -21,3 +21,14 @@
 (equal? (multi-insertR 'd 'a '(a b c)) '(a d b c))
 (equal? (multi-insertR 'd 'b '(a b b)) '(a b d b d))
 
+(define multi-subst
+  (lambda (new old lat)
+    (cond 
+      ((null? lat) '())
+      ((eq? old (car lat)) (cons new (multi-subst new old (cdr lat))))
+      (else (cons (car lat) (multi-subst new old (cdr lat)))))))
+
+(equal? (multi-subst 'd 'a '(b c d)) '(b c d))
+(equal? (multi-subst 'd 'a '(a b c)) '(d b c))
+(equal? (multi-subst 'd 'b '(a b b)) '(a d d))
+
